@@ -8,7 +8,7 @@ use ArrayIterator;
 use StellarWP\FieldConditions\Contracts\Condition;
 use StellarWP\FieldConditions\Contracts\ConditionSet;
 
-class NestedConditionSet implements ConditionSet
+class ComplexConditionSet implements ConditionSet
 {
     /**
      * @var Condition[]

@@ -5,15 +5,21 @@ namespace StellarWP\FieldConditions;
 use StellarWP\FieldConditions\Contracts\Condition;
 
 /**
- * @since 2.13.0
+ * A condition that holds and evaluates multiple conditions.
+ *
+ * @unreleased
  */
 class NestedCondition implements Condition
 {
 
-    /** @var string */
+    /**
+     * The type of condition.
+     */
     const TYPE = 'nested';
 
-    /** @var Condition[] */
+    /**
+     * @var array<Condition>
+     */
     protected $conditions = [];
 
     /**
@@ -31,11 +37,23 @@ class NestedCondition implements Condition
     public function __construct(array $conditions, string $logicalOperator = 'and')
     {
         $this->conditions = $conditions;
+
+        if ( ! in_array($logicalOperator, Condition::LOGICAL_OPERATORS, true)) {
+            throw Config::throwInvalidArgumentException(
+                "Invalid logical operator: $logicalOperator. Must be one of: " . implode(
+                    ', ',
+                    Condition::LOGICAL_OPERATORS
+                )
+            );
+        }
+
         $this->logicalOperator = $logicalOperator;
     }
 
     /**
      * @inheritDoc
+     *
+     * @unreleased
      */
     public function jsonSerialize(): array
     {
@@ -48,13 +66,15 @@ class NestedCondition implements Condition
 
     /**
      * @inheritDoc
+     *
+     * @unreleased
      */
     public function passes(array $values): bool
     {
         return array_reduce(
             $this->conditions,
-            static function ($carry, $condition) use ($values) {
-                return $condition->boolean === 'and'
+            static function ($carry, Condition $condition) use ($values) {
+                return $condition->getLogicalOperator() === 'and'
                     ? $carry && $condition->passes($values)
                     : $carry || $condition->passes($values);
             },
@@ -64,12 +84,19 @@ class NestedCondition implements Condition
 
     /**
      * @inheritDoc
+     *
+     * @unreleased
      */
     public function fails(array $values): bool
     {
         return ! $this->passes($values);
     }
 
+    /**
+     * @inheritDoc
+     *
+     * @unreleased
+     */
     public function getLogicalOperator(): string
     {
         return $this->logicalOperator;
