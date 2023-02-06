@@ -10,7 +10,7 @@ use StellarWP\FieldConditions\Contracts\Condition;
  */
 class BasicCondition implements Condition
 {
-    const OPERATORS = ['=', '!=', '>', '>=', '<', '<=', 'contains', 'not_contains'];
+    const COMPARISON_OPERATORS = ['=', '!=', '>', '>=', '<', '<=', 'contains', 'not_contains'];
 
     /** @var string */
     const TYPE = 'basic';
@@ -40,13 +40,13 @@ class BasicCondition implements Condition
     {
         if ($this->isInvalidComparisonOperator($comparisonOperator)) {
             throw Config::throwInvalidArgumentException(
-                "Invalid operator: $comparisonOperator. Must be one of: " . implode(', ', self::OPERATORS)
+                "Invalid comparison operator: $comparisonOperator. Must be one of: " . implode(', ', self::COMPARISON_OPERATORS)
             );
         }
 
         if ($this->isInvalidLogicalOperator($logicalOperator)) {
             throw Config::throwInvalidArgumentException(
-                "Invalid boolean: $logicalOperator. Must be one of: " . implode(', ', self::BOOLEANS)
+                "Invalid logical operator: $logicalOperator. Must be one of: " . implode(', ', Condition::LOGICAL_OPERATORS)
             );
         }
 
@@ -121,7 +121,7 @@ class BasicCondition implements Condition
      */
     protected function isInvalidComparisonOperator(string $operator): bool
     {
-        return ! in_array($operator, static::OPERATORS, true);
+        return ! in_array($operator, static::COMPARISON_OPERATORS, true);
     }
 
     /**
