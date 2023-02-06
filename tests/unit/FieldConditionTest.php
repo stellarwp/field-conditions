@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use StellarWP\FieldConditions\BasicCondition;
+use StellarWP\FieldConditions\FieldCondition;
 use StellarWP\FieldConditions\Tests\TestCase;
 
-class BasicConditionTest extends TestCase
+class FieldConditionTest extends TestCase
 {
     /**
      * @unreleased
@@ -14,7 +14,7 @@ class BasicConditionTest extends TestCase
      */
     public function testPassingConditions($valueToCompare, $comparisonOperator, $conditionalValue)
     {
-        $condition = new BasicCondition('field', $comparisonOperator, $conditionalValue);
+        $condition = new FieldCondition('field', $comparisonOperator, $conditionalValue);
 
         $this->assertTrue($condition->passes(['field' => $valueToCompare]));
     }
@@ -43,7 +43,7 @@ class BasicConditionTest extends TestCase
      */
     public function testFailingConditions($valueToCompare, $comparisonOperator, $conditionalValue)
     {
-        $condition = new BasicCondition('field', $comparisonOperator, $conditionalValue);
+        $condition = new FieldCondition('field', $comparisonOperator, $conditionalValue);
 
         $this->assertTrue($condition->fails(['field' => $valueToCompare]));
     }
@@ -70,7 +70,7 @@ class BasicConditionTest extends TestCase
      */
     public function testConditionSerialization()
     {
-        $condition = new BasicCondition('field', '=', 'foo');
+        $condition = new FieldCondition('field', '=', 'foo');
 
         $this->assertEquals([
             'type' => 'basic',
@@ -86,7 +86,7 @@ class BasicConditionTest extends TestCase
      */
     public function testGettingLogicalOperator()
     {
-        $condition = new BasicCondition('field', '=', 'foo', 'or');
+        $condition = new FieldCondition('field', '=', 'foo', 'or');
 
         $this->assertEquals('or', $condition->getLogicalOperator());
     }
@@ -96,7 +96,7 @@ class BasicConditionTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid comparison operator');
 
-        new BasicCondition('field', 'foo', 'bar');
+        new FieldCondition('field', 'foo', 'bar');
     }
 
     public function testConstructorThrowsExceptionForInvalidLogicalOperator()
@@ -104,6 +104,6 @@ class BasicConditionTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid logical operator');
 
-        new BasicCondition('field', '=', 'bar', 'foo');
+        new FieldCondition('field', '=', 'bar', 'foo');
     }
 }

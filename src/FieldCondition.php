@@ -8,7 +8,7 @@ use StellarWP\FieldConditions\Contracts\Condition;
 /**
  * @since 2.13.0
  */
-class BasicCondition implements Condition
+class FieldCondition implements Condition
 {
     const COMPARISON_OPERATORS = ['=', '!=', '>', '>=', '<', '<=', 'contains', 'not_contains'];
 
@@ -30,7 +30,7 @@ class BasicCondition implements Condition
     protected $logicalOperator;
 
     /**
-     * Create a new BasicCondition.
+     * Create a new FieldCondition.
      *
      * @unreleased
      *

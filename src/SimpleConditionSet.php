@@ -10,14 +10,14 @@ use StellarWP\FieldConditions\Contracts\ConditionSet;
 class SimpleConditionSet implements ConditionSet
 {
     /**
-     * @var BasicCondition[]
+     * @var FieldCondition[]
      */
     protected $conditions = [];
 
     /**
      * @unreleased
      */
-    public function __construct(BasicCondition ...$conditions)
+    public function __construct(FieldCondition ...$conditions)
     {
         $this->conditions = $conditions;
     }
@@ -25,7 +25,7 @@ class SimpleConditionSet implements ConditionSet
     /**
      * @unreleased
      *
-     * @return BasicCondition[]
+     * @return FieldCondition[]
      */
     public function getConditions(): array
     {
@@ -41,7 +41,7 @@ class SimpleConditionSet implements ConditionSet
     {
         return array_reduce(
             $this->conditions,
-            static function (bool $passes, BasicCondition $condition) use ($values) {
+            static function (bool $passes, FieldCondition $condition) use ($values) {
                 return $condition->getLogicalOperator() === 'and'
                     ? $passes && $condition->passes($values)
                     : $passes || $condition->passes($values);
