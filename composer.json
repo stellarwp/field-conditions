@@ -1,0 +1,41 @@
+{
+    "name": "stellarwp/field-conditions",
+    "description": "A set of serializable classes for handling conditional logic for fields in PHP",
+    "minimum-stability": "stable",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "StellarWP",
+            "email": "dev@stellarwp.com"
+        },
+        {
+            "name": "Jason Adams",
+            "email": "jason.adams@givewp.com"
+        }
+    ],
+    "require": {
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0",
+        "lucatume/di52": "^3.0",
+        "lucatume/wp-browser": "^3.0.14",
+        "codeception/module-phpbrowser": "^1.0.0",
+        "codeception/module-asserts": "^1.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "StellarWP\\FieldConditions\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "StellarWP\\FieldConditions\\Tests\\": "tests/_support/Helper"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "7.2"
+        }
+    }
+}
