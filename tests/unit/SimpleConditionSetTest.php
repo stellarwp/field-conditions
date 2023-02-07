@@ -94,6 +94,20 @@ class SimpleConditionSetTest extends TestCase
     /**
      * @unreleased
      */
+    public function testShouldAddConditions()
+    {
+        $condition1 = $this->createMock(FieldCondition::class);
+        $condition2 = $this->createMock(FieldCondition::class);
+        $conditionSet = new SimpleConditionSet($condition1);
+
+        $conditionSet->addConditions($condition2);
+
+        $this->assertSame([$condition1, $condition2], $conditionSet->getConditions());
+    }
+
+    /**
+     * @unreleased
+     */
     public function testShouldReturnSerializedConditions()
     {
         $condition = $this->createMock(FieldCondition::class);
