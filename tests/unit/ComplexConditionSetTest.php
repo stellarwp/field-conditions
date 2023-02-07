@@ -106,6 +106,9 @@ class ComplexConditionSetTest extends TestCase
         self::assertSame([$condition1, $condition2], $conditionSet->getConditions());
     }
 
+    /**
+     * @unreleased
+     */
     public function testShouldReturnJsonSerializedConditions()
     {
         $condition1 = $this->createMock(Condition::class);
@@ -123,5 +126,20 @@ class ComplexConditionSetTest extends TestCase
             ],
             $conditionSet->jsonSerialize()
         );
+    }
+
+    public function testShouldAllowIterationOverConditions()
+    {
+        $condition1 = $this->createMock(Condition::class);
+        $condition2 = $this->createMock(Condition::class);
+
+        $conditionSet = new ComplexConditionSet($condition1, $condition2);
+
+        $conditions = [];
+        foreach ($conditionSet as $condition) {
+            $conditions[] = $condition;
+        }
+
+        self::assertSame([$condition1, $condition2], $conditions);
     }
 }
