@@ -97,9 +97,14 @@ class ComplexConditionSet implements ConditionSet
      *
      * @unreleased
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
-        return $this->conditions;
+        return array_map(
+            static function (Condition $condition) {
+                return $condition->jsonSerialize();
+            },
+            $this->conditions
+        );
     }
 
     /**

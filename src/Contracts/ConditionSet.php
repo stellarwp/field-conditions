@@ -57,4 +57,13 @@ interface ConditionSet extends IteratorAggregate, JsonSerializable
      * @param array<string, mixed> $values
      */
     public function fails(array $values): bool;
+
+    /**
+     * Returns the conditions in array form for JSON serialization.
+     *
+     * @unreleased
+     *
+     * @return list<array>
+     */
+    public function jsonSerialize(): array;
 }

@@ -98,9 +98,14 @@ class SimpleConditionSet implements ConditionSet
      *
      * @unreleased
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
-        return $this->conditions;
+        return array_map(
+            static function (FieldCondition $condition) {
+                return $condition->jsonSerialize();
+            },
+            $this->conditions
+        );
     }
 
     /**

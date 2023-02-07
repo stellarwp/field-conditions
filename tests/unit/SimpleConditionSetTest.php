@@ -108,12 +108,13 @@ class SimpleConditionSetTest extends TestCase
     /**
      * @unreleased
      */
-    public function testShouldReturnSerializedConditions()
+    public function testShouldReturnJsonSerializedConditions()
     {
         $condition = $this->createMock(FieldCondition::class);
+        $condition->method('jsonSerialize')->willReturn(['foo' => 'bar']);
         $conditionSet = new SimpleConditionSet($condition);
 
-        $this->assertSame([$condition], $conditionSet->jsonSerialize());
+        $this->assertSame([['foo' => 'bar']], $conditionSet->jsonSerialize());
     }
 
     /**
