@@ -17,9 +17,15 @@ class ComplexConditionSet implements ConditionSet
 
     /**
      * @unreleased
+     *
+     * @param Condition ...$conditions
      */
-    public function __construct(Condition ...$conditions)
+    public function __construct(...$conditions)
     {
+        foreach ($conditions as $condition) {
+            $this->validateFieldCondition($condition);
+        }
+
         $this->conditions = $conditions;
     }
 
@@ -31,6 +37,21 @@ class ComplexConditionSet implements ConditionSet
     public function getConditions(): array
     {
         return $this->conditions;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @unreleased
+     *
+     * @param Condition ...$condition
+     */
+    public function addConditions(...$conditions)
+    {
+        foreach ($conditions as $condition) {
+            $this->validateFieldCondition($condition);
+            $this->conditions[] = $condition;
+        }
     }
 
     /**
@@ -79,5 +100,15 @@ class ComplexConditionSet implements ConditionSet
     public function jsonSerialize()
     {
         return $this->conditions;
+    }
+
+    /**
+     * @unreleased
+     */
+    private function validateFieldCondition($condition)
+    {
+        if ( ! $condition instanceof Condition) {
+            Config::throwInvalidArgumentException('Condition must be an instance of FieldCondition');
+        }
     }
 }

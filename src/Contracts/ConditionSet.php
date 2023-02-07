@@ -6,10 +6,20 @@ namespace StellarWP\FieldConditions\Contracts;
 
 use IteratorAggregate;
 use JsonSerializable;
-use StellarWP\FieldConditions\Condition;
 
 interface ConditionSet extends IteratorAggregate, JsonSerializable
 {
+    /**
+     * Constructs the set with the given conditions
+     *
+     * @unreleased
+     *
+     * @param Condition ...$conditions
+     *
+     * @return void
+     */
+    public function __construct(...$conditions);
+
     /**
      * Returns all conditions in the set.
      *
@@ -18,6 +28,17 @@ interface ConditionSet extends IteratorAggregate, JsonSerializable
      * @return array<Condition>
      */
     public function getConditions(): array;
+
+    /**
+     * Add one or more conditions to the set;
+     *
+     * @unreleased
+     *
+     * @param Condition ...$conditions
+     *
+     * @return void
+     */
+    public function addConditions(...$conditions);
 
     /**
      * Returns true if all conditions in the set pass.

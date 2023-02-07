@@ -16,9 +16,17 @@ class SimpleConditionSet implements ConditionSet
 
     /**
      * @unreleased
+     *
+     * @param FieldCondition ...$conditions
+     *
+     * @return void
      */
-    public function __construct(FieldCondition ...$conditions)
+    public function __construct(...$conditions)
     {
+        foreach ($conditions as $condition) {
+            $this->validateFieldCondition($condition);
+        }
+
         $this->conditions = $conditions;
     }
 
@@ -30,6 +38,21 @@ class SimpleConditionSet implements ConditionSet
     public function getConditions(): array
     {
         return $this->conditions;
+    }
+
+    /**
+     * @unreleased
+     *
+     * @param FieldCondition ...$conditions
+     *
+     * @return void
+     */
+    public function addConditions(...$conditions)
+    {
+        foreach ($conditions as $condition) {
+            $this->validateFieldCondition($condition);
+            $this->conditions[] = $condition;
+        }
     }
 
     /**
@@ -78,5 +101,15 @@ class SimpleConditionSet implements ConditionSet
     public function jsonSerialize()
     {
         return $this->conditions;
+    }
+
+    /**
+     * @unreleased
+     */
+    private function validateFieldCondition($condition)
+    {
+        if ( ! $condition instanceof FieldCondition) {
+            Config::throwInvalidArgumentException('Condition must be an instance of FieldCondition');
+        }
     }
 }
