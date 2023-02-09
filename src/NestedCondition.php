@@ -9,7 +9,7 @@ use StellarWP\FieldConditions\Contracts\Condition;
 /**
  * A condition that holds and evaluates multiple conditions.
  *
- * @unreleased
+ * @since 1.0.0
  *
  * @uses HasConditions<Condition>
  */
@@ -24,7 +24,7 @@ class NestedCondition implements Condition
     const TYPE = 'nested';
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @param Condition[] $conditions
      * @param 'and'|'or' $logicalOperator
@@ -38,7 +38,7 @@ class NestedCondition implements Condition
     /**
      * @inheritDoc
      *
-     * @unreleased
+     * @since 1.0.0
      */
     public function jsonSerialize(): array
     {

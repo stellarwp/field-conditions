@@ -13,7 +13,7 @@ interface Condition extends JsonSerializable
     /**
      * Returns the logical operator for this condition.
      *
-     * @unreleased
+     * @since 1.0.0
      *
      * @return 'and'|'or'
      */

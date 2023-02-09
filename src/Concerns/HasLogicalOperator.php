@@ -15,7 +15,7 @@ trait HasLogicalOperator
     protected $logicalOperator;
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @return void
      */
@@ -34,7 +34,7 @@ trait HasLogicalOperator
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function getLogicalOperator(): string
     {

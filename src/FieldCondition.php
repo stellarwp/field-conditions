@@ -7,7 +7,7 @@ use StellarWP\FieldConditions\Concerns\HasLogicalOperator;
 use StellarWP\FieldConditions\Contracts\Condition;
 
 /**
- * @unreleased
+ * @since 1.0.0
  */
 class FieldCondition implements Condition
 {
@@ -30,7 +30,7 @@ class FieldCondition implements Condition
     /**
      * Create a new FieldCondition.
      *
-     * @unreleased
+     * @since 1.0.0
      *
      * @param mixed $value
      */
@@ -52,7 +52,7 @@ class FieldCondition implements Condition
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @inheritDoc
      */
@@ -68,7 +68,7 @@ class FieldCondition implements Condition
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function passes(array $values): bool
     {
@@ -109,7 +109,7 @@ class FieldCondition implements Condition
     /**
      * Check if the provided operator is invalid.
      *
-     * @unreleased
+     * @since 1.0.0
      */
     protected function isInvalidComparisonOperator(string $operator): bool
     {
@@ -119,7 +119,7 @@ class FieldCondition implements Condition
     /**
      * Check if the provided boolean is invalid.
      *
-     * @unreleased
+     * @since 1.0.0
      */
     protected function isInvalidLogicalOperator(string $operator): bool
     {

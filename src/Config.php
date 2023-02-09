@@ -9,7 +9,7 @@ use InvalidArgumentException;
 /**
  * Sets up the Field Condition library. It currently only provides an optional means of replacing an exception.
  *
- * @unreleased
+ * @since 1.0.0
  */
 class Config
 {
@@ -19,7 +19,7 @@ class Config
     private static $invalidArgumentExceptionClass = InvalidArgumentException::class;
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @throws InvalidArgumentException
      */
@@ -29,7 +29,7 @@ class Config
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @return class-string<InvalidArgumentException>
      */
@@ -39,7 +39,7 @@ class Config
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @param class-string<InvalidArgumentException> $invalidArgumentExceptionClass
      */

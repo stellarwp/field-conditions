@@ -9,7 +9,7 @@ use StellarWP\FieldConditions\Tests\TestCase;
 class SimpleConditionSetTest extends TestCase
 {
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldRunAndPassConditionsWithLogicalAnd()
     {
@@ -27,7 +27,7 @@ class SimpleConditionSetTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldRunAndPassConditionsWithLogicalOr()
     {
@@ -45,7 +45,7 @@ class SimpleConditionSetTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldRunAndFailConditionsWithLogicalAnd()
     {
@@ -63,7 +63,7 @@ class SimpleConditionSetTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldRunAndFailConditionsWithLogicalOr()
     {
@@ -81,7 +81,7 @@ class SimpleConditionSetTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldReturnConditions()
     {
@@ -92,7 +92,7 @@ class SimpleConditionSetTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldAddConditions()
     {
@@ -106,7 +106,7 @@ class SimpleConditionSetTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldReturnJsonSerializedConditions()
     {
@@ -118,7 +118,7 @@ class SimpleConditionSetTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldAllowIterationOverConditions()
     {

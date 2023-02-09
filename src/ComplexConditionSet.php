@@ -18,7 +18,7 @@ class ComplexConditionSet implements ConditionSet
     use HasConditions;
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @param Condition ...$conditions
      */
@@ -31,7 +31,7 @@ class ComplexConditionSet implements ConditionSet
     /**
      * @inheritDoc
      *
-     * @unreleased
+     * @since 1.0.0
      */
     public function getIterator(): ArrayIterator
     {
@@ -41,7 +41,7 @@ class ComplexConditionSet implements ConditionSet
     /**
      * @inheritDoc
      *
-     * @unreleased
+     * @since 1.0.0
      */
     public function jsonSerialize(): array
     {

@@ -11,7 +11,7 @@ use StellarWP\FieldConditions\Tests\TestCase;
 class ComplexConditionSetTest extends TestCase
 {
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldRunAndPassConditionsWithLogicalAnd()
     {
@@ -29,7 +29,7 @@ class ComplexConditionSetTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldRunAndPassConditionsWithLogicalOr()
     {
@@ -62,7 +62,7 @@ class ComplexConditionSetTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldRunAndFailConditionsWithLogicalOr()
     {
@@ -80,7 +80,7 @@ class ComplexConditionSetTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldReturnConditions()
     {
@@ -93,7 +93,7 @@ class ComplexConditionSetTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldAddConditions()
     {
@@ -107,7 +107,7 @@ class ComplexConditionSetTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldReturnJsonSerializedConditions()
     {

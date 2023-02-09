@@ -8,7 +8,7 @@ use StellarWP\FieldConditions\Tests\TestCase;
 class FieldConditionTest extends TestCase
 {
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @dataProvider passConditionsDataProviders
      */
@@ -20,7 +20,7 @@ class FieldConditionTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function passConditionsDataProviders(): array
     {
@@ -37,7 +37,7 @@ class FieldConditionTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @dataProvider failConditionsDataProviders
      */
@@ -49,7 +49,7 @@ class FieldConditionTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function failConditionsDataProviders(): array
     {
@@ -66,7 +66,7 @@ class FieldConditionTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testConditionSerialization()
     {
@@ -82,7 +82,7 @@ class FieldConditionTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testGettingLogicalOperator()
     {

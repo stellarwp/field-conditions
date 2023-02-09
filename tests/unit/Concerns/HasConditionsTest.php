@@ -93,7 +93,7 @@ class HasConditionsTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldRunAndPassConditionsWithLogicalOr()
     {
@@ -111,7 +111,7 @@ class HasConditionsTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldRunAndFailConditionsWithLogicalAnd()
     {
@@ -129,7 +129,7 @@ class HasConditionsTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldRunAndFailConditionsWithLogicalOr()
     {

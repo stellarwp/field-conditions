@@ -16,7 +16,7 @@ interface ConditionSet extends IteratorAggregate, JsonSerializable
     /**
      * Constructs the set with the given conditions
      *
-     * @unreleased
+     * @since 1.0.0
      *
      * @param C ...$conditions
      *
@@ -27,7 +27,7 @@ interface ConditionSet extends IteratorAggregate, JsonSerializable
     /**
      * Returns all conditions in the set.
      *
-     * @unreleased
+     * @since 1.0.0
      *
      * @return array<C>
      */
@@ -36,7 +36,7 @@ interface ConditionSet extends IteratorAggregate, JsonSerializable
     /**
      * Add one or more conditions to the set;
      *
-     * @unreleased
+     * @since 1.0.0
      *
      * @param C ...$conditions
      *
@@ -45,7 +45,7 @@ interface ConditionSet extends IteratorAggregate, JsonSerializable
     public function append(...$conditions);
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @param string|C|Closure $condition
      * @param string|null $comparisonOperator
@@ -54,7 +54,7 @@ interface ConditionSet extends IteratorAggregate, JsonSerializable
     public function where($condition, string $comparisonOperator = null, $value = null): self;
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @param string|C|Closure $condition
      * @param string|null $comparisonOperator
@@ -63,7 +63,7 @@ interface ConditionSet extends IteratorAggregate, JsonSerializable
     public function and($condition, string $comparisonOperator = null, $value = null): self;
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @param string|C|Closure $condition
      * @param string|null $comparisonOperator
@@ -74,7 +74,7 @@ interface ConditionSet extends IteratorAggregate, JsonSerializable
     /**
      * Returns true if all conditions in the set pass.
      *
-     * @unreleased
+     * @since 1.0.0
      *
      * @param array<string, mixed> $values
      */
@@ -83,7 +83,7 @@ interface ConditionSet extends IteratorAggregate, JsonSerializable
     /**
      * Returns true if any condition in the set fails.
      *
-     * @unreleased
+     * @since 1.0.0
      *
      * @param array<string, mixed> $values
      */
@@ -92,7 +92,7 @@ interface ConditionSet extends IteratorAggregate, JsonSerializable
     /**
      * Returns the conditions in array form for JSON serialization.
      *
-     * @unreleased
+     * @since 1.0.0
      *
      * @return list<array>
      */

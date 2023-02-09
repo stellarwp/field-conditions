@@ -17,7 +17,7 @@ class SimpleConditionSet implements ConditionSet
     use HasConditions;
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @param FieldCondition ...$conditions
      *
@@ -32,7 +32,7 @@ class SimpleConditionSet implements ConditionSet
     /**
      * @inheritDoc
      *
-     * @unreleased
+     * @since 1.0.0
      */
     public function getIterator(): ArrayIterator
     {
@@ -42,7 +42,7 @@ class SimpleConditionSet implements ConditionSet
     /**
      * @inheritDoc
      *
-     * @unreleased
+     * @since 1.0.0
      */
     public function jsonSerialize(): array
     {

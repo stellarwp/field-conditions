@@ -9,7 +9,7 @@ use StellarWP\FieldConditions\Tests\TestCase;
 class NestedConditionTest extends TestCase
 {
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldRunAndPassConditionsWithLogicalAnd()
     {
@@ -29,7 +29,7 @@ class NestedConditionTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldRunAndPassConditionsWithLogicalOr()
     {
@@ -49,7 +49,7 @@ class NestedConditionTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldRunAndFailConditionsWithLogicalAnd()
     {
@@ -69,7 +69,7 @@ class NestedConditionTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldRunAndFailConditionsWithLogicalOr()
     {
@@ -89,7 +89,7 @@ class NestedConditionTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldGetLogicalOperator()
     {
@@ -99,7 +99,7 @@ class NestedConditionTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldReturnSerializedCondition()
     {
@@ -116,7 +116,7 @@ class NestedConditionTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function testShouldThrowExceptionWhenLogicalOperatorIsInvalid()
     {

@@ -25,7 +25,7 @@ trait HasConditions
     /**
      * Append condition instances to the end of the conditions array.
      *
-     * @unreleased
+     * @since 1.0.0
      *
      * @param Condition ...$conditions
      */
@@ -40,7 +40,7 @@ trait HasConditions
     /**
      * Returns all internal conditions.
      *
-     * @unreleased
+     * @since 1.0.0
      *
      * @return array<C>
      */
@@ -50,7 +50,7 @@ trait HasConditions
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @param string|C|Closure $condition
      * @param string|null $comparisonOperator
@@ -62,7 +62,7 @@ trait HasConditions
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @param string|C|Closure $condition
      * @param string|null $comparisonOperator
@@ -76,7 +76,7 @@ trait HasConditions
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      *
      * @param string|C|Closure $condition
      * @param string|null $comparisonOperator
@@ -114,7 +114,7 @@ trait HasConditions
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function passes(array $values): bool
     {
@@ -130,7 +130,7 @@ trait HasConditions
     }
 
     /**
-     * @unreleased
+     * @since 1.0.0
      */
     public function fails(array $values): bool
     {
@@ -141,7 +141,7 @@ trait HasConditions
      * Returns the Condition interface/class used as the base for this ConditionSet. By default, this is Condition,
      * but this allows for creating a ConditionSet that only accepts a specific type of Condition.
      *
-     * @unreleased
+     * @since 1.0.0
      *
      * @return class-string<C>
      */
@@ -153,7 +153,7 @@ trait HasConditions
     /**
      * Validates the condition based on the base condition class.
      *
-     * @unreleased
+     * @since 1.0.0
      *
      * @param $condition
      *
@@ -176,7 +176,7 @@ trait HasConditions
     /**
      * Validates the conditions based on the base condition class.
      *
-     * @unreleased
+     * @since 1.0.0
      */
     protected function validateConditions(array $conditions)
     {
