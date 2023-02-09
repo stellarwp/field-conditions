@@ -29,7 +29,7 @@ class NestedCondition implements Condition
      * @param Condition[] $conditions
      * @param 'and'|'or' $logicalOperator
      */
-    public function __construct(array $conditions, string $logicalOperator = 'and')
+    public function __construct(array $conditions = [], string $logicalOperator = 'and')
     {
         $this->conditions = $conditions;
         $this->setLogicalOperator($logicalOperator);

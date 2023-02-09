@@ -88,6 +88,19 @@ $complexSet
     });
 ```
 
+Condition instances can also be passed to the `where`, `and`, and `or` methods. Note that the
+logical operator in the condition will be overwritten by the method used.
+
+```php
+$conditionSet = new SimpleConditionSet();
+
+$nestedCondition = new NestedCondition();
+
+$conditionSet
+    ->where(new FieldCondition('name', '=', 'John'));
+    ->and($nestedCondition);
+```
+
 It's also possible to append conditions to an existing condition set:
 
 ```php
