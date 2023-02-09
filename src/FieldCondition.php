@@ -3,13 +3,16 @@
 namespace StellarWP\FieldConditions;
 
 use InvalidArgumentException;
+use StellarWP\FieldConditions\Concerns\HasLogicalOperator;
 use StellarWP\FieldConditions\Contracts\Condition;
 
 /**
- * @since 2.13.0
+ * @unreleased
  */
 class FieldCondition implements Condition
 {
+    use HasLogicalOperator;
+
     const COMPARISON_OPERATORS = ['=', '!=', '>', '>=', '<', '<=', 'contains', 'not_contains'];
 
     /** @var string */
@@ -25,11 +28,6 @@ class FieldCondition implements Condition
     protected $comparisonOperator;
 
     /**
-     * @var 'and'|'or'
-     */
-    protected $logicalOperator;
-
-    /**
      * Create a new FieldCondition.
      *
      * @unreleased
@@ -40,24 +38,23 @@ class FieldCondition implements Condition
     {
         if ($this->isInvalidComparisonOperator($comparisonOperator)) {
             throw Config::throwInvalidArgumentException(
-                "Invalid comparison operator: $comparisonOperator. Must be one of: " . implode(', ', self::COMPARISON_OPERATORS)
-            );
-        }
-
-        if ($this->isInvalidLogicalOperator($logicalOperator)) {
-            throw Config::throwInvalidArgumentException(
-                "Invalid logical operator: $logicalOperator. Must be one of: " . implode(', ', Condition::LOGICAL_OPERATORS)
+                "Invalid comparison operator: $comparisonOperator. Must be one of: " . implode(
+                    ', ',
+                    self::COMPARISON_OPERATORS
+                )
             );
         }
 
         $this->field = $field;
         $this->comparisonOperator = $comparisonOperator;
         $this->value = $value;
-        $this->logicalOperator = $logicalOperator;
+        $this->setLogicalOperator($logicalOperator);
     }
 
     /**
-     * {@inheritDoc}
+     * @unreleased
+     *
+     * @inheritDoc
      */
     public function jsonSerialize(): array
     {
@@ -70,6 +67,9 @@ class FieldCondition implements Condition
         ];
     }
 
+    /**
+     * @unreleased
+     */
     public function passes(array $values): bool
     {
         if ( ! isset($values[$this->field])) {
@@ -107,17 +107,9 @@ class FieldCondition implements Condition
     }
 
     /**
-     * @inheritDoc
-     */
-    public function getLogicalOperator(): string
-    {
-        return $this->logicalOperator;
-    }
-
-    /**
      * Check if the provided operator is invalid.
      *
-     * @since 2.13.0
+     * @unreleased
      */
     protected function isInvalidComparisonOperator(string $operator): bool
     {
@@ -127,7 +119,7 @@ class FieldCondition implements Condition
     /**
      * Check if the provided boolean is invalid.
      *
-     * @since 2.13.0
+     * @unreleased
      */
     protected function isInvalidLogicalOperator(string $operator): bool
     {

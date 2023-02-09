@@ -101,7 +101,7 @@ class ComplexConditionSetTest extends TestCase
         $condition2 = $this->createMock(Condition::class);
 
         $conditionSet = new ComplexConditionSet($condition1);
-        $conditionSet->addConditions($condition2);
+        $conditionSet->append($condition2);
 
         self::assertSame([$condition1, $condition2], $conditionSet->getConditions());
     }
