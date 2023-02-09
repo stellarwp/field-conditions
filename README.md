@@ -71,21 +71,30 @@ use StellarWP\FieldConditions\SimpleConditionSet;
 
 $simpleSet = new SimpleConditionSet(); // you can pass conditions here as well
 
-// Logically: name = 'John' AND age > 18
-$simpleSet->addConditions(
-    new FieldCondition('name', '=', 'John'),
-    new FieldCondition('age', '>', 18)
-);
+$simpleSet
+    ->where('name', '=', 'John')
+    ->and('age', '>', 18)
+    ->or('age', '<', 5);
 
 // Logically: name = 'John' AND age > 18 OR (name = 'Jane' AND age > 21)
 $complexSet = new ComplexConditionSet();
-$complexSet->addConditions(
+$complexSet
+    ->where('name', '=', 'John')
+    ->and('age', '>', 18)
+    ->or(function(NestedCondition $condition) {
+        $condition
+            ->where('name', '=', 'Jane')
+            ->and('age', '>', 21);
+    });
+```
+
+It's also possible to append conditions to an existing condition set:
+
+```php
+$conditionSet = new SimpleConditionSet();
+$conditionSet->append(
     new FieldCondition('name', '=', 'John'),
-    new FieldCondition('age', '>', 18),
-    new NestedCondition([
-        new FieldCondition('name', '=', 'Jane'),
-        new FieldCondition('age', '>', 21),
-    ], 'or')
+    new FieldCondition('age', '>', 18)
 );
 ```
 
@@ -100,11 +109,34 @@ $data = [
     'age' => 19,
 ];
 
-$conditionSet->addConditions(
-    new FieldCondition('name', '=', 'John'),
-    new FieldCondition('age', '>', 18)
-);
+$simpleSet
+    ->where('name', '=', 'John')
+    ->and('age', '>', 18);
 
 $conditionSet->passes($data); // true
 $conditionSet->fails($data); // false
 ```
+
+### A note about logical operators (and/or) in conditions
+
+One thing that may be confusing is how logical operations work in conditions. Consider the
+following:
+
+```php
+$conditionSet = new SimpleConditionSet(
+    new FieldCondition('name', '=', 'John'),
+    new FieldCondition('age', '>', 18, 'or')
+);
+```
+
+Logically, this reads as "name equals John OR age is greater than 18". What makes this feel
+strange is that the logical operator appears at the end of the second condition. This makes it feel
+like the OR is being applied to the end of the second condition. In reality, the OR is being applied
+to the start of the condition.
+
+The logical operator is applied to the start of the condition, as the logical operation applies to
+the current condition, not the next. This is why the typical way to write the sets is using the
+`where()`, `and()`, and `or()` methods, so it feels more natural.
+
+Lastly, the default logical operator is AND, so it is only necessary to specify the logical operator
+when using OR.
