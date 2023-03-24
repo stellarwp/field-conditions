@@ -20,21 +20,51 @@ class FieldConditionTest extends TestCase
     }
 
     /**
+     * @unreleased add loosely equal conditions
      * @since 1.0.0
      */
     public function passConditionsDataProviders(): array
     {
         return [
             ['foo', '=', 'foo'],
+            [10, '=', '10.00'],
             ['foo', '!=', 'bar'],
             [5, '>', 1],
+            [10, '>', '1'],
             [5, '>=', 5],
             [1, '<', 5],
             [5, '<=', 5],
             ['foo', 'contains', 'oo'],
+            ['1234', 'contains', '3'],
             ['foo', 'not_contains', 'bar'],
         ];
     }
+
+    /**
+     * @unreleased
+     *
+     * @dataProvider passStrictConditionsDataProviders
+     */
+    public function testPassingStrictConditions($valueToCompare, $comparisonOperator, $conditionalValue)
+    {
+        $condition = new FieldCondition('field', $comparisonOperator, $conditionalValue);
+        $condition->strict();
+
+        $this->assertTrue($condition->passes(['field' => $valueToCompare]));
+    }
+
+    public function passStrictConditionsDataProviders(): array
+    {
+        return [
+            [10, '=', 10],
+            [10, '!=', '10'],
+            [10, '>', 5],
+            [10, '>=', 10],
+            [10, '<', 15],
+            [10, '<=', 10],
+        ];
+    }
+
 
     /**
      * @since 1.0.0
@@ -62,6 +92,36 @@ class FieldConditionTest extends TestCase
             [5, '<=', 0],
             ['foo', 'contains', 'bar'],
             ['foo', 'not_contains', 'foo'],
+        ];
+    }
+
+    /**
+     * @unreleased
+     *
+     * @dataProvider failStrictConditionsDataProviders
+     */
+    public function testFailingStrictConditions($valueToCompare, $comparisonOperator, $conditionalValue)
+    {
+        $condition = new FieldCondition('field', $comparisonOperator, $conditionalValue);
+        $condition->strict();
+
+        $this->assertTrue($condition->fails(['field' => $valueToCompare]));
+    }
+
+    /**
+     * @unreleased
+     */
+    public function failStrictConditionsDataProviders(): array
+    {
+        return [
+            [10, '=', '10'],
+            [10, '!=', 10],
+            [10, '>', 15],
+            [10, '>=', 15],
+            [10, '<', 5],
+            [10, '<=', 5],
+            ['2', 'contains', 2],
+            ['2', 'not_contains', '2'],
         ];
     }
 
