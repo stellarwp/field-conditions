@@ -64,6 +64,7 @@ class FieldCondition implements Condition
             'type' => static::TYPE,
             'field' => $this->field,
             'value' => $this->value,
+            'strictComparison' => $this->strict,
             'comparisonOperator' => $this->comparisonOperator,
             'logicalOperator' => $this->logicalOperator,
         ];

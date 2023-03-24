@@ -136,6 +136,7 @@ class FieldConditionTest extends TestCase
             'type' => 'basic',
             'field' => 'field',
             'comparisonOperator' => '=',
+            'strictComparison' => false,
             'value' => 'foo',
             'logicalOperator' => 'and',
         ], $condition->jsonSerialize());
