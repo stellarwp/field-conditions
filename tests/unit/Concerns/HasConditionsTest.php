@@ -24,6 +24,18 @@ class HasConditionsTest extends TestCase
         self::assertCount(2, $conditionSet->getConditions());
     }
 
+    /**
+     * @since 1.1.0
+     */
+    public function testShouldCheckWhetherSetHasConditionsOrNot()
+    {
+        $conditionSet = new ConditionSet();
+        self::assertFalse($conditionSet->hasConditions());
+
+        $conditionSet->append($this->createMock(Condition::class));
+        self::assertTrue($conditionSet->hasConditions());
+    }
+
     public function testShouldAddAndConditionUsingWhereMethod()
     {
         $conditionSet = new ConditionSet();

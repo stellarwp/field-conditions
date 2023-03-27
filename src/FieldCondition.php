@@ -27,6 +27,8 @@ class FieldCondition implements Condition
     /** @var string */
     protected $comparisonOperator;
 
+    protected $strict = false;
+
     /**
      * Create a new FieldCondition.
      *
@@ -62,6 +64,7 @@ class FieldCondition implements Condition
             'type' => static::TYPE,
             'field' => $this->field,
             'value' => $this->value,
+            'strictComparison' => $this->strict,
             'comparisonOperator' => $this->comparisonOperator,
             'logicalOperator' => $this->logicalOperator,
         ];
@@ -72,17 +75,21 @@ class FieldCondition implements Condition
      */
     public function passes(array $values): bool
     {
-        if ( ! isset($values[$this->field])) {
+        if (!isset($values[$this->field])) {
             throw new InvalidArgumentException("Field {$this->field} not found in test values.");
         }
 
         $testValue = $values[$this->field];
 
+        if ($this->strict && $this->comparisonOperator !== '!=' && gettype($testValue) !== gettype($this->value)) {
+            return false;
+        }
+
         switch ($this->comparisonOperator) {
             case '=':
-                return $testValue === $this->value;
+                return $testValue == $this->value;
             case '!=':
-                return $testValue !== $this->value;
+                return $this->strict ? $testValue !== $this->value : $testValue != $this->value;
             case '>':
                 return $testValue > $this->value;
             case '>=':
@@ -92,9 +99,9 @@ class FieldCondition implements Condition
             case '<=':
                 return $testValue <= $this->value;
             case 'contains':
-                return ('' === $this->value || false !== strpos($testValue, $this->value));
+                return ('' == $this->value || false !== strpos($testValue, $this->value));
             case 'not_contains':
-                return ('' === $this->value || false === strpos($testValue, $this->value));
+                return ('' == $this->value || false === strpos($testValue, $this->value));
         }
     }
 
@@ -103,7 +110,19 @@ class FieldCondition implements Condition
      */
     public function fails(array $values): bool
     {
-        return ! $this->passes($values);
+        return !$this->passes($values);
+    }
+
+    /**
+     * Sets the condition to strict mode.
+     *
+     * @since 1.1.0
+     */
+    public function strict(bool $strict = true): self
+    {
+        $this->strict = $strict;
+
+        return $this;
     }
 
     /**
@@ -113,7 +132,7 @@ class FieldCondition implements Condition
      */
     protected function isInvalidComparisonOperator(string $operator): bool
     {
-        return ! in_array($operator, static::COMPARISON_OPERATORS, true);
+        return !in_array($operator, static::COMPARISON_OPERATORS, true);
     }
 
     /**
@@ -123,6 +142,6 @@ class FieldCondition implements Condition
      */
     protected function isInvalidLogicalOperator(string $operator): bool
     {
-        return ! in_array($operator, Condition::LOGICAL_OPERATORS, true);
+        return !in_array($operator, Condition::LOGICAL_OPERATORS, true);
     }
 }

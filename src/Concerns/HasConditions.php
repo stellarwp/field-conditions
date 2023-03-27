@@ -50,6 +50,16 @@ trait HasConditions
     }
 
     /**
+     * Returns whether the condition set has any conditions.
+     *
+     * @since 1.1.0
+     */
+    public function hasConditions(): bool
+    {
+        return ! empty($this->conditions);
+    }
+
+    /**
      * @since 1.0.0
      *
      * @param string|C|Closure $condition

@@ -20,21 +20,51 @@ class FieldConditionTest extends TestCase
     }
 
     /**
+     * @since 1.1.0 add loosely equal conditions
      * @since 1.0.0
      */
     public function passConditionsDataProviders(): array
     {
         return [
             ['foo', '=', 'foo'],
+            [10, '=', '10.00'],
             ['foo', '!=', 'bar'],
             [5, '>', 1],
+            [10, '>', '1'],
             [5, '>=', 5],
             [1, '<', 5],
             [5, '<=', 5],
             ['foo', 'contains', 'oo'],
+            ['1234', 'contains', '3'],
             ['foo', 'not_contains', 'bar'],
         ];
     }
+
+    /**
+     * @since 1.1.0
+     *
+     * @dataProvider passStrictConditionsDataProviders
+     */
+    public function testPassingStrictConditions($valueToCompare, $comparisonOperator, $conditionalValue)
+    {
+        $condition = new FieldCondition('field', $comparisonOperator, $conditionalValue);
+        $condition->strict();
+
+        $this->assertTrue($condition->passes(['field' => $valueToCompare]));
+    }
+
+    public function passStrictConditionsDataProviders(): array
+    {
+        return [
+            [10, '=', 10],
+            [10, '!=', '10'],
+            [10, '>', 5],
+            [10, '>=', 10],
+            [10, '<', 15],
+            [10, '<=', 10],
+        ];
+    }
+
 
     /**
      * @since 1.0.0
@@ -66,6 +96,36 @@ class FieldConditionTest extends TestCase
     }
 
     /**
+     * @since 1.1.0
+     *
+     * @dataProvider failStrictConditionsDataProviders
+     */
+    public function testFailingStrictConditions($valueToCompare, $comparisonOperator, $conditionalValue)
+    {
+        $condition = new FieldCondition('field', $comparisonOperator, $conditionalValue);
+        $condition->strict();
+
+        $this->assertTrue($condition->fails(['field' => $valueToCompare]));
+    }
+
+    /**
+     * @since 1.1.0
+     */
+    public function failStrictConditionsDataProviders(): array
+    {
+        return [
+            [10, '=', '10'],
+            [10, '!=', 10],
+            [10, '>', 15],
+            [10, '>=', 15],
+            [10, '<', 5],
+            [10, '<=', 5],
+            ['2', 'contains', 2],
+            ['2', 'not_contains', '2'],
+        ];
+    }
+
+    /**
      * @since 1.0.0
      */
     public function testConditionSerialization()
@@ -76,6 +136,7 @@ class FieldConditionTest extends TestCase
             'type' => 'basic',
             'field' => 'field',
             'comparisonOperator' => '=',
+            'strictComparison' => false,
             'value' => 'foo',
             'logicalOperator' => 'and',
         ], $condition->jsonSerialize());
