@@ -34,6 +34,13 @@ interface ConditionSet extends IteratorAggregate, JsonSerializable
     public function getConditions(): array;
 
     /**
+     * Returns true if the set has conditions.
+     *
+     * @unreleased
+     */
+    public function hasConditions(): bool;
+
+    /**
      * Add one or more conditions to the set;
      *
      * @since 1.0.0
