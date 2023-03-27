@@ -25,7 +25,7 @@ class HasConditionsTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.1.0
      */
     public function testShouldCheckWhetherSetHasConditionsOrNot()
     {

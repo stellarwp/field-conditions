@@ -36,7 +36,7 @@ interface ConditionSet extends IteratorAggregate, JsonSerializable
     /**
      * Returns true if the set has conditions.
      *
-     * @unreleased
+     * @since 1.1.0
      */
     public function hasConditions(): bool;
 

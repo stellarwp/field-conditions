@@ -116,7 +116,7 @@ class FieldCondition implements Condition
     /**
      * Sets the condition to strict mode.
      *
-     * @unreleased
+     * @since 1.1.0
      */
     public function strict(bool $strict = true): self
     {

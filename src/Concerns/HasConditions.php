@@ -52,7 +52,7 @@ trait HasConditions
     /**
      * Returns whether the condition set has any conditions.
      *
-     * @unreleased
+     * @since 1.1.0
      */
     public function hasConditions(): bool
     {

@@ -20,7 +20,7 @@ class FieldConditionTest extends TestCase
     }
 
     /**
-     * @unreleased add loosely equal conditions
+     * @since 1.1.0 add loosely equal conditions
      * @since 1.0.0
      */
     public function passConditionsDataProviders(): array
@@ -41,7 +41,7 @@ class FieldConditionTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.1.0
      *
      * @dataProvider passStrictConditionsDataProviders
      */
@@ -96,7 +96,7 @@ class FieldConditionTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.1.0
      *
      * @dataProvider failStrictConditionsDataProviders
      */
@@ -109,7 +109,7 @@ class FieldConditionTest extends TestCase
     }
 
     /**
-     * @unreleased
+     * @since 1.1.0
      */
     public function failStrictConditionsDataProviders(): array
     {
