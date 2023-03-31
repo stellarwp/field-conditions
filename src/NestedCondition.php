@@ -2,9 +2,11 @@
 
 namespace StellarWP\FieldConditions;
 
+use ArrayIterator;
 use StellarWP\FieldConditions\Concerns\HasConditions;
 use StellarWP\FieldConditions\Concerns\HasLogicalOperator;
 use StellarWP\FieldConditions\Contracts\Condition;
+use StellarWP\FieldConditions\Contracts\ConditionSet;
 
 /**
  * A condition that holds and evaluates multiple conditions.
@@ -13,7 +15,7 @@ use StellarWP\FieldConditions\Contracts\Condition;
  *
  * @uses HasConditions<Condition>
  */
-class NestedCondition implements Condition
+class NestedCondition implements Condition, ConditionSet
 {
     use HasLogicalOperator;
     use HasConditions;
@@ -47,5 +49,13 @@ class NestedCondition implements Condition
             'conditions' => $this->conditions,
             'boolean' => $this->logicalOperator,
         ];
+    }
+
+    /**
+     * @unreleased
+     */
+    public function getIterator(): ArrayIterator
+    {
+        return new ArrayIterator($this->conditions);
     }
 }
