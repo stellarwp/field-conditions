@@ -60,6 +60,7 @@ trait HasConditions
     }
 
     /**
+     * @unreleased return ConditionSet type for PHP 7.0 compatibility
      * @since 1.0.0
      *
      * @param string|C|Closure $condition
@@ -72,6 +73,7 @@ trait HasConditions
     }
 
     /**
+     * @unreleased return ConditionSet type for PHP 7.0 compatibility
      * @since 1.0.0
      *
      * @param string|C|Closure $condition
@@ -86,6 +88,7 @@ trait HasConditions
     }
 
     /**
+     * @unreleased return ConditionSet type for PHP 7.0 compatibility
      * @since 1.0.0
      *
      * @param string|C|Closure $condition

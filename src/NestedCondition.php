@@ -11,6 +11,7 @@ use StellarWP\FieldConditions\Contracts\ConditionSet;
 /**
  * A condition that holds and evaluates multiple conditions.
  *
+ * @unreleased implement the ConditionSet interface
  * @since 1.0.0
  *
  * @uses HasConditions<Condition>
