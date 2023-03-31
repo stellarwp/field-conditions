@@ -65,8 +65,6 @@ trait HasConditions
      * @param string|C|Closure $condition
      * @param string|null $comparisonOperator
      * @param mixed|null $value
-     *
-     * @return static
      */
     public function where($condition, string $comparisonOperator = null, $value = null): ConditionSet
     {
