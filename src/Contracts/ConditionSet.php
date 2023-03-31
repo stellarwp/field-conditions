@@ -58,7 +58,7 @@ interface ConditionSet extends IteratorAggregate, JsonSerializable
      * @param string|null $comparisonOperator
      * @param mixed|null $value
      */
-    public function where($condition, string $comparisonOperator = null, $value = null): self;
+    public function where($condition, string $comparisonOperator = null, $value = null): ConditionSet;
 
     /**
      * @since 1.0.0
@@ -67,7 +67,7 @@ interface ConditionSet extends IteratorAggregate, JsonSerializable
      * @param string|null $comparisonOperator
      * @param mixed|null $value
      */
-    public function and($condition, string $comparisonOperator = null, $value = null): self;
+    public function and($condition, string $comparisonOperator = null, $value = null): ConditionSet;
 
     /**
      * @since 1.0.0
@@ -76,7 +76,7 @@ interface ConditionSet extends IteratorAggregate, JsonSerializable
      * @param string|null $comparisonOperator
      * @param mixed|null $value
      */
-    public function or($condition, string $comparisonOperator = null, $value = null): self;
+    public function or($condition, string $comparisonOperator = null, $value = null): ConditionSet;
 
     /**
      * Returns true if all conditions in the set pass.
