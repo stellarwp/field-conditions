@@ -60,25 +60,27 @@ trait HasConditions
     }
 
     /**
+     * @unreleased return ConditionSet type for PHP 7.0 compatibility
      * @since 1.0.0
      *
      * @param string|C|Closure $condition
      * @param string|null $comparisonOperator
      * @param mixed|null $value
      */
-    public function where($condition, string $comparisonOperator = null, $value = null): self
+    public function where($condition, string $comparisonOperator = null, $value = null): ConditionSet
     {
         return $this->and($condition, $comparisonOperator, $value);
     }
 
     /**
+     * @unreleased return ConditionSet type for PHP 7.0 compatibility
      * @since 1.0.0
      *
      * @param string|C|Closure $condition
      * @param string|null $comparisonOperator
      * @param mixed|null $value
      */
-    public function and($condition, string $comparisonOperator = null, $value = null): self
+    public function and($condition, string $comparisonOperator = null, $value = null): ConditionSet
     {
         $this->conditions[] = $this->createCondition($condition, $comparisonOperator, $value, 'and');
 
@@ -86,13 +88,14 @@ trait HasConditions
     }
 
     /**
+     * @unreleased return ConditionSet type for PHP 7.0 compatibility
      * @since 1.0.0
      *
      * @param string|C|Closure $condition
      * @param string|null $comparisonOperator
      * @param mixed|null $value
      */
-    public function or($condition, string $comparisonOperator = null, $value = null): self
+    public function or($condition, string $comparisonOperator = null, $value = null): ConditionSet
     {
         $this->conditions[] = $this->createCondition($condition, $comparisonOperator, $value, 'or');
 
