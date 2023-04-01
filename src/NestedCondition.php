@@ -11,7 +11,7 @@ use StellarWP\FieldConditions\Contracts\ConditionSet;
 /**
  * A condition that holds and evaluates multiple conditions.
  *
- * @unreleased implement the ConditionSet interface
+ * @since 1.1.1 implement the ConditionSet interface
  * @since 1.0.0
  *
  * @uses HasConditions<Condition>
@@ -53,7 +53,7 @@ class NestedCondition implements Condition, ConditionSet
     }
 
     /**
-     * @unreleased
+     * @since 1.1.1
      */
     public function getIterator(): ArrayIterator
     {
