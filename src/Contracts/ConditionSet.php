@@ -14,17 +14,6 @@ use JsonSerializable;
 interface ConditionSet extends IteratorAggregate, JsonSerializable
 {
     /**
-     * Constructs the set with the given conditions
-     *
-     * @since 1.0.0
-     *
-     * @param C ...$conditions
-     *
-     * @return void
-     */
-    public function __construct(...$conditions);
-
-    /**
      * Returns all conditions in the set.
      *
      * @since 1.0.0

@@ -4,13 +4,17 @@ declare(strict_types=1);
 
 namespace unit\Concerns;
 
+use ArrayIterator;
 use InvalidArgumentException;
 use StellarWP\FieldConditions\Concerns\HasConditions;
 use StellarWP\FieldConditions\Concerns\HasLogicalOperator;
 use StellarWP\FieldConditions\Contracts\Condition;
+use StellarWP\FieldConditions\Contracts\ConditionSet as ConditionSetContract;
 use StellarWP\FieldConditions\FieldCondition;
 use StellarWP\FieldConditions\NestedCondition;
 use StellarWP\FieldConditions\Tests\TestCase;
+use Traversable;
+
 class HasConditionsTest extends TestCase
 {
     public function testShouldAppendAndGetConditions()
@@ -185,16 +189,26 @@ class HasConditionsTest extends TestCase
     }
 }
 
-class ConditionSet {
+class ConditionSet implements ConditionSetContract {
     use HasConditions;
 
     public function __construct(...$conditions)
     {
         $this->conditions = $conditions;
     }
+
+    public function jsonSerialize(): array
+    {
+        return [];
+    }
+
+    public function getIterator(): ArrayIterator
+    {
+        return new ArrayIterator($this->conditions);
+    }
 }
 
-class ConditionSetWithDifferentBaseClass {
+class ConditionSetWithDifferentBaseClass implements ConditionSetContract {
     use HasConditions;
 
     public function __construct(...$conditions)
@@ -205,6 +219,16 @@ class ConditionSetWithDifferentBaseClass {
     protected static function getBaseConditionClass(): string
     {
         return MockCondition::class;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [];
+    }
+
+    public function getIterator(): ArrayIterator
+    {
+        return new ArrayIterator($this->conditions);
     }
 }
 
