@@ -60,6 +60,7 @@ trait HasConditions
     }
 
     /**
+     * @since 1.1.2 make nullable parameters explicit for PHP 8.4 compatibility
      * @since 1.1.1 return ConditionSet type for PHP 7.0 compatibility
      * @since 1.0.0
      *
@@ -73,6 +74,7 @@ trait HasConditions
     }
 
     /**
+     * @since 1.1.2 make nullable parameters explicit for PHP 8.4 compatibility
      * @since 1.1.1 return ConditionSet type for PHP 7.0 compatibility
      * @since 1.0.0
      *
@@ -88,6 +90,7 @@ trait HasConditions
     }
 
     /**
+     * @since 1.1.2 make nullable parameters explicit for PHP 8.4 compatibility
      * @since 1.1.1 return ConditionSet type for PHP 7.0 compatibility
      * @since 1.0.0
      *
