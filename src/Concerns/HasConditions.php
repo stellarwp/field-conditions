@@ -67,7 +67,7 @@ trait HasConditions
      * @param string|null $comparisonOperator
      * @param mixed|null $value
      */
-    public function where($condition, string $comparisonOperator = null, $value = null): ConditionSet
+    public function where($condition, ?string $comparisonOperator = null, $value = null): ConditionSet
     {
         return $this->and($condition, $comparisonOperator, $value);
     }
@@ -80,7 +80,7 @@ trait HasConditions
      * @param string|null $comparisonOperator
      * @param mixed|null $value
      */
-    public function and($condition, string $comparisonOperator = null, $value = null): ConditionSet
+    public function and($condition, ?string $comparisonOperator = null, $value = null): ConditionSet
     {
         $this->conditions[] = $this->createCondition($condition, $comparisonOperator, $value, 'and');
 
@@ -95,7 +95,7 @@ trait HasConditions
      * @param string|null $comparisonOperator
      * @param mixed|null $value
      */
-    public function or($condition, string $comparisonOperator = null, $value = null): ConditionSet
+    public function or($condition, ?string $comparisonOperator = null, $value = null): ConditionSet
     {
         $this->conditions[] = $this->createCondition($condition, $comparisonOperator, $value, 'or');
 
@@ -106,11 +106,11 @@ trait HasConditions
      * @param C|Closure|string $condition
      * @param string|null $comparisonOperator
      * @param mixed $value
-     * @param string $logicalOperator
+     * @param string|null $logicalOperator
      *
      * @return Condition|FieldCondition|NestedCondition
      */
-    private function createCondition($condition, string $comparisonOperator = null, $value = null, string $logicalOperator = null)
+    private function createCondition($condition, ?string $comparisonOperator = null, $value = null, ?string $logicalOperator = null)
     {
         $baseConditionClass = static::getBaseConditionClass();
         if ($condition instanceof $baseConditionClass) {
