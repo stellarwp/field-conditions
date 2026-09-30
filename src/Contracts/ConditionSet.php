@@ -41,31 +41,34 @@ interface ConditionSet extends IteratorAggregate, JsonSerializable
     public function append(...$conditions);
 
     /**
+     * @since 1.1.2 make nullable parameters explicit for PHP 8.4 compatibility
      * @since 1.0.0
      *
      * @param string|C|Closure $condition
      * @param string|null $comparisonOperator
      * @param mixed|null $value
      */
-    public function where($condition, string $comparisonOperator = null, $value = null): self;
+    public function where($condition, ?string $comparisonOperator = null, $value = null): self;
 
     /**
+     * @since 1.1.2 make nullable parameters explicit for PHP 8.4 compatibility
      * @since 1.0.0
      *
      * @param string|C|Closure $condition
      * @param string|null $comparisonOperator
      * @param mixed|null $value
      */
-    public function and($condition, string $comparisonOperator = null, $value = null): self;
+    public function and($condition, ?string $comparisonOperator = null, $value = null): self;
 
     /**
+     * @since 1.1.2 make nullable parameters explicit for PHP 8.4 compatibility
      * @since 1.0.0
      *
      * @param string|C|Closure $condition
      * @param string|null $comparisonOperator
      * @param mixed|null $value
      */
-    public function or($condition, string $comparisonOperator = null, $value = null): self;
+    public function or($condition, ?string $comparisonOperator = null, $value = null): self;
 
     /**
      * Returns true if all conditions in the set pass.
